@@ -8,9 +8,9 @@
   <style>
     /* General Styling */
     body {
-      background: linear-gradient(135deg, #4a90e2, #9013fe);
-      font-family: 'Arial', sans-serif;
-      color: #fff;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
       height: 100vh;
       display: flex;
       justify-content: center;
@@ -22,21 +22,28 @@
       margin: 0;
     }
 
-    /* Login Form Styling */
-    #login-form {
-      background-color: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    a {
+      text-decoration: none;
+    }
+
+    /* Glassmorphism Effect */
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
       padding: 30px;
       width: 100%;
       max-width: 400px;
-      text-align: center;
     }
 
+    /* Login Form */
     #login-form h1 {
       font-size: 28px;
       margin-bottom: 20px;
-      color: #4a90e2;
+      color: #4ac6ff;
     }
 
     #login-form input {
@@ -49,203 +56,212 @@
     #login-form button {
       height: 45px;
       border-radius: 6px;
+      background: linear-gradient(135deg, #4ac6ff, #9013fe);
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
     }
 
-    /* Welcome Message Styling */
-    #welcome-message {
-      display: none;
+    #login-form button:hover {
+      background: linear-gradient(135deg, #9013fe, #4ac6ff);
+      transform: scale(1.05);
+    }
+
+    /* Welcome Screen */
+    #welcome-message h2 {
+      font-size: 28px;
+      line-height: 1.5;
+      white-space: pre-wrap;
       text-align: center;
     }
 
-    #welcome-message h2 {
-      font-size: 32px;
-      line-height: 1.5;
-      color: #fff;
-      white-space: pre-wrap;
-    }
-
-    /* Dashboard Styling */
+    /* Dashboard */
     #dashboard {
-      display: none;
-      width: 100%;
-      max-width: 500px;
+      display: none; /* Initially hidden */
     }
 
     #dashboard .card {
-      background-color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
       padding: 25px;
-      color: #333;
+      color: #fff;
       text-align: center;
+      animation: fadeIn 1s ease-in-out;
     }
 
     #dashboard h3 {
       font-size: 24px;
       margin-bottom: 20px;
-      color: #4a90e2;
+      color: #4ac6ff;
     }
 
-    #dashboard .details {
-      margin: 20px 0;
+    /* Links Section */
+    .quick-actions {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .quick-actions a {
+      padding: 10px 20px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #4ac6ff, #9013fe);
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s ease;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .quick-actions a:hover {
+      transform: scale(1.1);
+      background: linear-gradient(135deg, #9013fe, #4ac6ff);
+    }
+
+    /* Notifications */
+    .notifications {
+      margin-top: 30px;
+      text-align: left;
+      background: rgba(0, 0, 0, 0.4);
       padding: 15px;
       border-radius: 8px;
-      background-color: #f7f9fc;
-      box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
-      text-align: left;
     }
 
-    #dashboard .details p {
-      font-size: 16px;
-      margin: 5px 0;
+    .notifications h4 {
+      color: #4ac6ff;
+      font-size: 20px;
     }
 
-    #dashboard .links {
-      margin-top: 20px;
+    .notifications ul {
+      list-style-type: none;
+      padding: 0;
     }
 
-    #dashboard .links a {
-      display: inline-block;
-      margin: 10px 10px 0;
-      color: #fff;
-      background-color: #4a90e2;
-      padding: 10px 20px;
-      border-radius: 6px;
-      text-decoration: none;
+    .notifications li {
+      margin-bottom: 10px;
     }
 
-    #dashboard .links a:hover {
-      background-color: #3a78c5;
+    /* Hover Effect for Notifications */
+    .notifications li:hover {
+      color: #4ac6ff;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Responsive Design */
     @media (max-width: 576px) {
-      body {
-        padding: 10px;
-      }
-
-      #login-form, #dashboard {
-        width: 100%;
-      }
-
       #dashboard h3 {
         font-size: 20px;
       }
 
-      #dashboard .details p {
-        font-size: 14px;
-      }
-
-      #dashboard .links a {
-        font-size: 14px;
+      .quick-actions a {
         padding: 8px 15px;
+        font-size: 12px;
       }
     }
   </style>
 </head>
 <body>
   <!-- Login Form -->
-  <div id="login-form" class="active">
-    <h1>Welcome Back!</h1>
-    <div>
-      <input type="text" id="username" class="form-control" placeholder="Username" required>
-    </div>
-    <div>
-      <input type="password" id="password" class="form-control" placeholder="Password" required>
-    </div>
-    <button class="btn btn-primary w-100 mt-3" onclick="handleLogin()">Login</button>
+  <div id="login-form" class="glass">
+    <h1>Welcome to Webify</h1>
+    <input type="text" id="username" class="form-control" placeholder="Username" required>
+    <input type="password" id="password" class="form-control" placeholder="Password" required>
+    <button class="btn w-100 mt-3" onclick="handleLogin()">Login</button>
     <div id="login-error" class="text-danger mt-2"></div>
   </div>
 
   <!-- Welcome Screen -->
-  <div id="welcome-message">
+  <div id="welcome-message" style="display: none;">
     <h2 id="welcome-text"></h2>
   </div>
 
   <!-- Dashboard -->
-  <div id="dashboard">
+  <div id="dashboard" class="glass">
     <div class="card">
       <h3>Welcome, <span id="user-name"></span>!</h3>
-      <div class="details">
-        <p><strong>Plan:</strong> <span id="user-plan"></span></p>
-        <p><strong>Expiry Date:</strong> <span id="expiry-date"></span></p>
-        <p><strong>Payment Type:</strong> <span id="payment-type"></span></p>
-      </div>
-      <div class="links">
-        <a href="https://discord.com" target="_blank">Support (Discord)</a>
+      <p><strong>Server Details:</strong> <span id="server-details"></span></p>
+      <p><strong>Plan:</strong> <span id="user-plan"></span></p>
+      <p><strong>Demo Field:</strong> <span id="demo-field"></span></p>
+      <div class="quick-actions">
+        <a href="https://discord.com" target="_blank">Discord Support</a>
         <a href="https://sellix.io" target="_blank">Sellix</a>
+      </div>
+      <div class="notifications">
+        <h4>Notifications</h4>
+        <ul>
+          <li>Your plan will expire in 7 days.</li>
+          <li>New server updates are available.</li>
+          <li>Your last payment was successful.</li>
+        </ul>
       </div>
     </div>
   </div>
 
   <script>
-    /**
-     * Editable User Data
-     * Update the username, password, and other user details here.
-     */
     const user = {
-      username: "Syther", // Set the username here
-      password: "password123", // Set the password here
-      plan: "Premium Bot Hosting Servers ( 5x )", // Set the user's plan here
-      expiry: "2025-12-31", // Set the expiry date here
-      paymentType: "Litecoin" // Set the payment type here
+      username: "Syther", // Changeable username
+      password: "287372yqhh", // Changeable password
+      serverDetails: "Germany | Powered By Webify",
+      plan: "Bot Hosting",
+      details: "5X Python Servers & 1X Node.js Servers | Total Payment Is 3.15$ Per Month",
     };
 
     function handleLogin() {
       const username = document.getElementById("username").value.trim();
       const password = document.getElementById("password").value.trim();
-      const errorDiv = document.getElementById("login-error");
 
-      // Validate login credentials
       if (username === user.username && password === user.password) {
-        errorDiv.textContent = "";
         showWelcomeMessage(username);
       } else {
-        errorDiv.textContent = "Invalid username or password.";
+        document.getElementById("login-error").textContent = "Invalid username or password.";
       }
     }
 
     function showWelcomeMessage(username) {
-      const loginForm = document.getElementById("login-form");
-      const welcomeMessage = document.getElementById("welcome-message");
-      const welcomeText = document.getElementById("welcome-text");
-      const dashboard = document.getElementById("dashboard");
+      document.getElementById("login-form").style.display = "none";
+      document.getElementById("welcome-message").style.display = "block";
 
-      // Hide login form
-      loginForm.style.display = "none";
-
-      // Show welcome message with typewriter effect
-      welcomeMessage.style.display = "block";
       const text = `Welcome to Webify Panel, ${username}.`;
-      welcomeText.innerHTML = "";
-
       let index = 0;
-      function typeCharacter() {
-        const char = text[index];
-        welcomeText.innerHTML += char;
+      const welcomeText = document.getElementById("welcome-text");
 
-        // Add delay for punctuation
-        let delay = 100;
-        if (char === ',' || char === '.') delay = 300;
-
-        index++;
+      function typeChar() {
         if (index < text.length) {
-          setTimeout(typeCharacter, delay);
+          welcomeText.textContent += text[index++];
+          setTimeout(typeChar, 100);
         } else {
-          setTimeout(() => {
-            // Transition to dashboard after typing is complete
-            welcomeMessage.style.display = "none";
-            dashboard.style.display = "block";
-
-            // Populate dashboard details
-            document.getElementById("user-name").textContent = username;
-            document.getElementById("user-plan").textContent = user.plan;
-            document.getElementById("expiry-date").textContent = user.expiry;
-            document.getElementById("payment-type").textContent = user.paymentType;
-          }, 3000);
+          setTimeout(showDashboard, 2000);
         }
       }
-      typeCharacter();
+
+      typeChar();
+    }
+
+    function showDashboard() {
+      document.getElementById("welcome-message").style.display = "none";
+      document.getElementById("dashboard").style.display = "block";
+
+      document.getElementById("user-name").textContent = user.username;
+      document.getElementById("server-details").textContent = user.serverDetails;
+      document.getElementById("user-plan").textContent = user.plan;
+      document.getElementById("demo-field").textContent = user.details;
     }
   </script>
 </body>
